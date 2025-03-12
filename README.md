@@ -1,5 +1,5 @@
 # lebaba-ecommerce-starter-files
-![lebaba-ecommerce-starter-files](/src/assets/github-cover.png)
+![lebaba-ecommerce-starter-files](/frontend//src/assets/github-cover.png)
 
 ## How to run this project:
 
