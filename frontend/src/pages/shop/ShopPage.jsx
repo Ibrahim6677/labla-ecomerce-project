@@ -34,7 +34,6 @@ const ShopPage = () => {
     page: currentPage,
     limit: productsPerPage,
   });
-
   // Clear filters
   const clearFilters = () => {
     setFiltersState({

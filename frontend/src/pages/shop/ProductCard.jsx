@@ -3,7 +3,7 @@ import RatingStars from '../../components/RatingStars'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../../redux/features/cart/cartSlice'
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 
 const ProductCard = ({ products }) => {
   const dispatch = useDispatch();
@@ -12,10 +12,10 @@ const ProductCard = ({ products }) => {
   const handleAttToCart = (product) => {
     dispatch(addToCart(product))
   }
-
-  useEffect(() => { 
-    window.scrollTo(0, 0)
-  })
+  
+  // useEffect(() => { 
+  //   window.scrollTo(0, 0)
+  // })
 
 
   return (
@@ -51,17 +51,10 @@ const ProductCard = ({ products }) => {
     </div>
   )
 }
+
+
 ProductCard.propTypes = {
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      oldPrice: PropTypes.number,
-      rating: PropTypes.number.isRequired
-    })
-  ).isRequired
-}
+  products: PropTypes.array.isRequired
+};
 
 export default ProductCard
