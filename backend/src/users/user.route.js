@@ -9,10 +9,14 @@ router.post("/register", async (req, res) => {
     const { username, email, password } = req.body;
     const user = new User({ username, email, password });
     await user.save();
-    res.status(201).send({ message: "User registered successfully!" });
-  }catch(err) {
-    console.error("Error occurred while registering user", err);
-    res.status(500).send({ message: "Error occurred while registering user" });
+    return res.status(201).send({ message: "User registered successfully!" });
+  } catch (err) {
+    console.error("Error registering user", err);
+    // لو Duplicate Key Error
+    if (err.code === 11000 && err.keyPattern && err.keyPattern.username) {
+      return res.status(400).send({ message: "Username already taken" });
+    }
+    return res.status(500).send({ message: "Internal server error" });
   }
 });
 

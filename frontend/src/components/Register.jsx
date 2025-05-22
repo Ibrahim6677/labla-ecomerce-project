@@ -13,22 +13,33 @@ const Register = () => {
   const [registerUser, { isLoading: registerLoading }] = useRegisterUserMutation();
   const navigate = useNavigate();
 
-    const handleRegister = async (e) => { 
-      e.preventDefault();
-      const data = {
-        username,
-        email,
-        password
-      }
-      try {
-        await registerUser(data).unwrap();
-        alert("Registration successful");
-        navigate('/login');
-      } catch {
-        setMessage("Registration failed");
+    // const handleRegister = async (e) => {
+    //   e.preventDefault();
+    //   const data = {
+    //     username,
+    //     email,
+    //     password
+    //   }
+    //   try {
+    //     await registerUser(data).unwrap();
+    //     alert("Registration successful");
+    //     navigate('/login');
+    //   } catch {
+    //     setMessage("Registration failed");
         
-      }
-    }
+    //   }
+  // }
+  const handleRegister = async (e) => { 
+    e.preventDefault();
+  try {
+    await registerUser({ username, email, password }).unwrap();
+    alert("Registration successful");
+    navigate('/login');
+  } catch (error) {
+    setMessage(error?.data?.message || "Registration failed");
+  }
+}
+
   return (
     <section className='h-screen flex items-center justify-center'>
           <div className='max-w-sm shadow bg-white mx-auto p-8'>
