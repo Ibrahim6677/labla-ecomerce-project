@@ -14,7 +14,6 @@ const loadUserFromLocalStorage = () => {
 // تعيين الحالة الابتدائية
 const initialState = loadUserFromLocalStorage() || { user: null };
 
-// إنشاء Slice لإدارة حالة المصادقة
 const authSlice = createSlice({
   name: 'auth',
   initialState,
